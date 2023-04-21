@@ -1,0 +1,16 @@
+name: combine_kit
+description: Customize handling of asynchronous events by combining event-processing operators.
+version: 0.0.1
+homepage: https://github.com/wkcdeie/combine_kit
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
