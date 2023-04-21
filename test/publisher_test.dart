@@ -25,8 +25,7 @@ void main() {
 
   test('Empty', () {
     final empty = Empty();
-    empty.sink((value) {
-    }, onCompletion: (reason) {
+    empty.sink((value) {}, onCompletion: (reason) {
       expect(reason, isNull);
     });
   });
@@ -49,6 +48,16 @@ void main() {
     final sequence = [0, 1, 3].publisher;
     sequence.sink((value) {
       expect(value, inClosedOpenRange(0, 4));
+    }, onCompletion: (reason) {
+      expect(reason, isNull);
+    });
+  });
+
+  test('Dictionary', () {
+    final sequence = {"a": 1}.publisher;
+    sequence.sink((value) {
+      expect(value.v1, 'a');
+      expect(value.v2, 1);
     }, onCompletion: (reason) {
       expect(reason, isNull);
     });

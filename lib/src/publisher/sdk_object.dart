@@ -1,5 +1,6 @@
 import '../subject/value.dart';
 import '../publisher/sequence.dart';
+import '../tuple.dart';
 
 extension StringPublisher on String {
   CurrentValueSubject<String, Never> get publisher =>
@@ -46,6 +47,6 @@ extension IterablePublisher<T> on Iterable<T> {
 }
 
 extension DictionaryPublisher<K, V> on Map<K, V> {
-  CurrentValueSubject<Map<K, V>, Never> get publisher =>
-      CurrentValueSubject<Map<K, V>, Never>(this);
+  Sequence<Tuple2<K, V>, Never> get publisher => Sequence<Tuple2<K, V>, Never>(
+      entries.map((e) => Tuple2<K, V>(e.key, e.value)));
 }
