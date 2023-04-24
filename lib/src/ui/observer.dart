@@ -7,7 +7,7 @@ typedef ObserverWidgetBuilder<T> = Widget Function(
     BuildContext context, T value);
 
 class ObserverBuilder<T> extends StatefulWidget {
-  final Publisher<T, Error> publisher;
+  final Publisher<T, Never> publisher;
   final ObserverWidgetBuilder<T> builder;
   final Widget? placeholder;
 
