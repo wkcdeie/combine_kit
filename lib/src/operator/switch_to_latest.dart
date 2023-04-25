@@ -34,9 +34,10 @@ class SwitchToLatestPublisher<P, Output, Failure extends Error>
   @override
   void receive(Output input) {
     assert(input is Publisher);
-    if (input is Publisher<P, Failure>) {
+    if (input is Publisher) {
       _cancellable?.cancel();
-      _cancellable = input.sink(
+      final publisher = input as Publisher<P, Failure>;
+      _cancellable = publisher.sink(
         (value) {
           _subscriber?.receive(value);
         },
